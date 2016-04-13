@@ -1,6 +1,4 @@
 #!/bin/bash
-accessKey
-secretAccessKey
 AMI=ami-97a7b4fd # EC2 Instances Control Panel, AMI ID
 S3_BUCKET=edu-cornell-cs-cs5300s16-rs2357-proj1b # S3 Bucket
 

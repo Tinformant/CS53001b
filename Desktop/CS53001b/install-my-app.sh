@@ -2,7 +2,7 @@
 S3_BUCKET=edu-cornell-cs-cs5300s16-rs2357-proj1b
 
 echo "your install instructions for a single node go here"
-echo "you could do this: aws s3 cp s3://${S3_BUCKET}/hello.war /path/to/tomcat/webapps/hello.war"
+echo "you could do this: aws s3 cp s3://${S3_BUCKET}/hello.war /usr/share/tomcat8/webapps/hello.war"
 echo "you would write to simpledb here"
 echo "you would loop reading simpledb here once every X seconds (say, 15?) until all nodes online"
 

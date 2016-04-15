@@ -1,0 +1,1 @@
+ssh -i SiR.pem ubuntu@ec2-52-87-247-92.compute-1.amazonaws.com

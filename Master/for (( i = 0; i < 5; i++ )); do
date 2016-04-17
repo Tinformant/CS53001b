@@ -1,0 +1,3 @@
+for (( i = 0; i < 5; i++ )); do
+echo $(aws sdb get-attributes --domain-name serverList --item-name $i) > serverMapping.txt
+done

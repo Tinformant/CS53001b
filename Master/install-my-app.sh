@@ -31,8 +31,8 @@ aws configure set preview.sdb true
 
 amiLaunchIndex=$(curl http://169.254.169.254/latest/meta-data/ami-launch-index)
 internalIP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
-publicHostName=$(curl http://169.254.169.254/latest/meta-data/hostname) #Return public DNS
-aws sdb put-attributes --domain-name serverList --item-name $amiLaunchIndex --attributes Name="Internal IP",Value=$internalIP Name="Public Host Name",Value=$publicHostName
+#publicHostName=$(curl http://169.254.169.254/latest/meta-data/hostname) #Return public DNS
+aws sdb put-attributes --domain-name serverList --item-name $amiLaunchIndex --attributes Name="Internal IP",Value=$internalIP #Name="Public Host Name",Value=$publicHostName
 
 #aws configure set preview.sdb true #Enable SimpleDB
 

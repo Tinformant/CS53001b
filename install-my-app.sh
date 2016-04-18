@@ -22,12 +22,7 @@ sudo chown ec2-user:ec2-user /usr/share/tomcat8/webapps
 
 aws s3 cp s3://edu-cornell-cs-cs5300s16-rs2357-proj1b/test-app.war /usr/share/tomcat8/webapps/test-app.war
 
-
 sudo echo '0' > ~/var/tmp/reboot.txt
-
-for (( i = 0; i < 5; i++ )); do
-	echo $(aws sdb get-attributes --domain-name serverList --item-name $i) > serverMapping.txt
-done
 
 aws configure set preview.sdb true
 
@@ -38,5 +33,11 @@ internalIP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 sudo echo $instanceID > 'SelfID.txt'
 
 aws sdb put-attributes --domain-name serverList --item-name $amiLaunchIndex --attributes Name="Internal IP",Value=$internalIP #Name="Public Host Name",Value=$publicHostName
+
+sleep 15s
+
+for (( i = 0; i < 5; i++ )); do
+	echo $(aws sdb get-attributes --domain-name serverList --item-name $i) > serverMapping.txt
+done
 
 sudo service tomcat8 start

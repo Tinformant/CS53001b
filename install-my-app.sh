@@ -20,7 +20,7 @@ sudo chmod o+w /usr/share/tomcat8
 sudo chown ec2-user:ec2-user /usr/share/tomcat8/webapps
 
 #aws s3 cp s3://edu-cornell-cs-cs5300s16-rs2357-proj1b/test-app.war /usr/share/tomcat8/webapps/test-app.war
-aws s3 cp s3://edu-cornell-cs-cs5300s16-rs2357-proj1b/individualWebEnd.war /usr/share/tomcat8/webapps/individualWebEnd.war #Deploy the .war file
+aws s3 cp s3://edu-cornell-cs-cs5300s16-rs2357-proj1b/IndividualWebEnd.war /usr/share/tomcat8/webapps/IndividualWebEnd.war #Deploy the .war file
 
 sudo echo '0' > ~/var/tmp/reboot.txt #Create reboot.txt
 

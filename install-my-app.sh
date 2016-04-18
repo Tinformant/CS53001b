@@ -22,7 +22,7 @@ sudo chown ec2-user:ec2-user /usr/share/tomcat8/webapps
 #aws s3 cp s3://edu-cornell-cs-cs5300s16-rs2357-proj1b/test-app.war /usr/share/tomcat8/webapps/test-app.war
 aws s3 cp s3://edu-cornell-cs-cs5300s16-rs2357-proj1b/IndividualWebEnd.war /usr/share/tomcat8/webapps/IndividualWebEnd.war #Deploy the .war file
 
-sudo echo '0' > ~/var/tmp/reboot.txt #Create reboot.txt
+sudo echo '0' > /usr/reboot.txt #Create reboot.txt
 
 aws configure set preview.sdb true #Enable SimpleDB
 
@@ -30,7 +30,7 @@ amiLaunchIndex=$(curl http://169.254.169.254/latest/meta-data/ami-launch-index) 
 instanceID=$(curl http://169.254.169.254/latest/meta-data/instance-id) #Get the instance's instance ID
 internalIP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4) #Get the instance's internal IP
 
-sudo echo $instanceID > ~/var/tmp/'SelfID.txt' #Create SelfID.txt
+sudo echo $instanceID > /usr/'SelfID.txt' #Create SelfID.txt
 
 aws sdb put-attributes --domain-name serverList --item-name $amiLaunchIndex --attributes Name="Internal IP",Value=$internalIP #Write the instance's informance to SimpleDB
 
@@ -38,7 +38,7 @@ sleep 15s #Wait for 15 seconds
 
 #The following lines will pull information from SimpleDB to each instance
 for (( i = 0; i < 5; i++ )); do
-	echo $(aws sdb get-attributes --domain-name serverList --item-name $i) > ~/var/tmp/serverMapping.txt
+	echo $(aws sdb get-attributes --domain-name serverList --item-name $i) > /usr//serverMapping.txt
 done
 
 sudo service tomcat8 start #Start Tomcat8

@@ -4,17 +4,18 @@ Does not allow "_", "|" characters within the message
 
 Launch.sh
 
-
 Sets up the simpledb database and creates the necessary domain: serverList
+Creates a security group needed to access port 8080 and 22
+Creates 5 ec-2 instances and configure them by running install-my-app.sh
 
 
+install-my-app.sh
 
-
-
-
-start_my_app.sh
-
-Appends each server to serverList in simpleDB
+Installs Tomcat 8 in each ec-2 instance
+Changes permissions to give access for deployment
+Deploys the .war file
+Appends information of each server to serverList in SimpleDB
+Waits for 15 seconds, then pull information of every server from SimpleDB
 
 
 

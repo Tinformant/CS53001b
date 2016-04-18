@@ -30,7 +30,7 @@ amiLaunchIndex=$(curl http://169.254.169.254/latest/meta-data/ami-launch-index) 
 instanceID=$(curl http://169.254.169.254/latest/meta-data/instance-id) #Get the instance's instance ID
 internalIP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4) #Get the instance's internal IP
 
-sudo echo $instanceID > 'SelfID.txt' #Create SelfID.txt
+sudo echo $instanceID > ~/var/tmp/'SelfID.txt' #Create SelfID.txt
 
 aws sdb put-attributes --domain-name serverList --item-name $amiLaunchIndex --attributes Name="Internal IP",Value=$internalIP #Write the instance's informance to SimpleDB
 
@@ -38,7 +38,7 @@ sleep 15s #Wait for 15 seconds
 
 #The following lines will pull information from SimpleDB to each instance
 for (( i = 0; i < 5; i++ )); do
-	echo $(aws sdb get-attributes --domain-name serverList --item-name $i) > serverMapping.txt
+	echo $(aws sdb get-attributes --domain-name serverList --item-name $i) > ~/var/tmp/serverMapping.txt
 done
 
 sudo service tomcat8 start #Start Tomcat8

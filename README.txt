@@ -13,15 +13,9 @@ install-my-app.sh
 
 Installs Tomcat 8 in each ec-2 instance
 Changes permissions to give access for deployment
-Deploys the .war file
+Deploys the .war file from S3
 Appends information of each server to serverList in SimpleDB
-Waits for 15 seconds, then pull information of every server from SimpleDB
-
-
-
-
-
-
+Waits for 15 seconds, then pulls information from every server in SimpleDB
 
 NodeEndServlet
 

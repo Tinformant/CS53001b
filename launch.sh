@@ -15,9 +15,9 @@ aws configure set default.region us-east-1
 aws configure set preview.sdb true #Enable SimpleDB
 aws sdb create-domain --domain-name serverList #Create a SimpleDB domain called "serverList"
 
-#The following lines create a security group needed to acesss port 8080 and 22
+#The following lines create a security group needed to access port 8080 and 22
 aws ec2 create-security-group --group-name mySecurityGroup --description "My security group"
 aws ec2 authorize-security-group-ingress --group-name mySecurityGroup --protocol tcp --port 22 --cidr 0.0.0.0/0
 aws ec2 authorize-security-group-ingress --group-name mySecurityGroup --protocol tcp --port 8080 --cidr 0.0.0.0/0
 
-aws ec2 run-instances --image-id ${AMI} --count 1 --instance-type t2.micro --key-name ${keyPair} --user-data file://install-my-app.sh --security-groups mySecurityGroup
+aws ec2 run-instances --image-id ${AMI} --count 5 --instance-type t2.micro --key-name ${keyPair} --user-data file://install-my-app.sh --security-groups mySecurityGroup

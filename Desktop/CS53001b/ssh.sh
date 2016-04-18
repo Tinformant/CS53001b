@@ -1,1 +1,0 @@
-ssh -i /SiR-key-pair-useast.pem ec2-user@ec2-52-87-227-112.compute-1.amazonaws.com

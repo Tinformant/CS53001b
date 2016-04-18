@@ -14,7 +14,7 @@ aws configure set aws_secret_access_key ${secretKey}
 aws configure set default.region us-east-1
 
 aws configure set preview.sdb true
-aws sdb create-domain --domain-name serverList1
+aws sdb create-domain --domain-name serverList
 
 #Uncomment the following lines
 #aws ec2 create-security-group --group-name mySecurityGroup --description "My security group"

@@ -35,7 +35,7 @@ amiLaunchIndex=$(curl http://169.254.169.254/latest/meta-data/ami-launch-index)
 instanceID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 internalIP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 
-sudo echo internalID > 'SelfID.txt'
+sudo echo $instanceID > 'SelfID.txt'
 
 aws sdb put-attributes --domain-name serverList --item-name $amiLaunchIndex --attributes Name="Internal IP",Value=$internalIP #Name="Public Host Name",Value=$publicHostName
 
